@@ -8,12 +8,18 @@
 body {
   background-color: #111;
   color: #fff;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 /* HEADER */
 header {
   min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+  background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
     url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');
   background-size: cover;
   background-position: center;
@@ -25,6 +31,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -45,6 +52,7 @@ nav a {
   color: white;
   text-decoration: none;
   font-size: 15px;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
@@ -58,6 +66,7 @@ nav button {
   background: #ff4d4d;
   color: white;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 nav button:hover {
@@ -71,14 +80,14 @@ nav button:hover {
 }
 
 .content h1 {
-  font-size: 48px;
+  font-size: clamp(32px, 5vw, 48px);
   margin-bottom: 15px;
 }
 
 .content p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: clamp(14px, 2.5vw, 16px);
   margin-bottom: 25px;
+  color: #ddd;
 }
 
 .content button {
@@ -98,8 +107,9 @@ nav button:hover {
 /* FOOTER */
 footer {
   background: #000;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 30px 20px;
 }
 
@@ -114,16 +124,52 @@ footer {
   color: #ccc;
 }
 
-/* RESPONSIVE */
+/* TABLET */
+@media (max-width: 992px) {
+  header {
+    padding: 20px 30px;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  .content {
+    margin-top: 80px;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
+    align-items: center;
     gap: 20px;
   }
 
+  nav {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  nav button {
+    width: 80%;
+  }
+
   footer {
-    flex-direction: column;
-    gap: 20px;
+    grid-template-columns: 1fr;
     text-align: center;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .content {
+    margin-top: 60px;
   }
 }
